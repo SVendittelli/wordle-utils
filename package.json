@@ -1,31 +1,68 @@
 {
-  "name": "wordle-utils",
-  "version": "1.0.0",
-  "description": "Utilities for interacting with wordle (https://www.powerlanguage.co.uk/wordle/)",
-  "keywords": [
-    "wordle"
-  ],
-  "homepage": "https://github.com/SVendittelli/wordle-utils#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SVendittelli/wordle-utils.git"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Sam Vendittelli",
-    "email": "sam.vendittelli@hotmail.com",
-    "url": "https://vendittelli.co.uk/"
-  },
-  "main": "index.mjs",
-  "scripts": {
-    "start": "node index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "prettier": "^2.5.1",
-    "prettier-plugin-packagejson": "^2.2.15"
-  },
-  "engines": {
-    "node": ">=16"
-  }
+	"name": "wordle-utils",
+	"version": "1.0.0",
+	"description": "Utilities for interacting with wordle (https://www.powerlanguage.co.uk/wordle/)",
+	"keywords": [
+	  "wordle"
+	],
+	"homepage": "https://github.com/SVendittelli/wordle-utils#readme",
+	"repository": {
+	  "type": "git",
+	  "url": "https://github.com/SVendittelli/wordle-utils.git"
+	},
+	"license": "MIT",
+	"author": {
+	  "name": "Sam Vendittelli",
+	  "email": "sam.vendittelli@hotmail.com",
+	  "url": "https://vendittelli.co.uk/"
+	},
+	"bin": "dist/cli.js",
+	"files": [
+		"dist/cli.js"
+	],
+	"scripts": {
+		"build": "tsc",
+		"start": "npm run build && dist/cli.js",
+		"pretest": "npm run build",
+		"test": "xo && ava"
+	},
+	"xo": {
+		"extends": "xo-react",
+		"rules": {
+			"react/prop-types": "off"
+		}
+	},
+	"ava": {
+		"typescript": {
+			"extensions": [
+				"tsx"
+			],
+			"rewritePaths": {
+				"source/": "dist/"
+			}
+		}
+	},
+	"dependencies": {
+		"ink": "^3.2.0",
+		"meow": "^9.0.0",
+		"react": "^17.0.2"
+	},
+	"devDependencies": {
+		"@ava/typescript": "^3.0.1",
+		"@sindresorhus/tsconfig": "^2.0.0",
+		"@types/react": "^17.0.38",
+		"ava": "^4.0.1",
+		"chalk": "^4.1.2",
+		"eslint-config-xo-react": "^0.26.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"ink-testing-library": "^2.1.0",
+		"prettier": "^2.5.1",
+		"prettier-plugin-packagejson": "^2.2.15",
+		"typescript": "^4.5.5",
+		"xo": "^0.39.1"
+	},
+	"engines": {
+		"node": ">=10"
+	}
 }
