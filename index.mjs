@@ -11,6 +11,7 @@ const checker = (potential) => {
     if (letters[position] !== letter) return false;
   }
   for (const { letter, positions } of includedLetters) {
+    if (!letters.includes(letter)) return false;
     for (const position of positions) {
       if (letters[position] === letter) return false;
     }
